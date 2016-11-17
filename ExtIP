@@ -1,0 +1,6 @@
+import requests
+
+ext_IP = requests.get("http://icanhazip.com").text
+print "Your external IP address is:" + " " + ext_IP
+
+
