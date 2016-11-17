@@ -1,0 +1,10 @@
+
+#  Method 1
+s = "test"
+print ":".join("{:02x}".format(ord(c)) for c in s)+"\n"
+
+#  Method 2\
+print ":".join(x.encode('hex') for x in s)+"\n"
+
+#  Method 3
+print map(lambda c: hex(ord(c)), s)
