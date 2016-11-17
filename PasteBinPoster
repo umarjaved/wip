@@ -1,0 +1,54 @@
+#WORKING
+
+#  Refer to paste bin for API config details
+
+
+
+from Crypto.Hash import SHA256
+
+
+import os
+import requests
+import urllib
+
+
+
+#  ext_IP = requests.get("http://icanhazip.com").text
+#  int_IP = os.system ('ipconfig -a')
+#  print "Your external IP address is:"+" "+ext_IP
+#  print 'Your internal IP address is: '+str(int_IP)
+
+api_dev_key = 'ADD ME'
+api_user_key = 'ADD ME'
+dicto = []
+encrypted_staged = []
+message = raw_input("Please type your UNENCRYPTED message: ")
+encrypt = ''
+
+if message in "KILL":
+    dicto.append(message)
+    print '\nWARNING-<<SKYHOOK ACTIVATED>>-- The message '+str(dict)+' ''has not been encrypted!'
+else:
+    encrypt = SHA256.new('message').hexdigest()
+    encrypted_staged.append(encrypt)
+print encrypt
+
+# print "READY TO TRANSMIT "+str(encrypted_staged).strip('['']')
+pastebin_vars = {
+    'api_dev_key': api_dev_key,
+    'api_paste_code': str(encrypted_staged),
+    'api_paste_private': 0,
+    'api_paste_name': 'd33p6',
+    'api_paste_expire_date': '10M',
+    'api_paste_format': 'text',
+    'api_user_key': api_user_key,
+    'api_option': 'paste',
+
+
+
+}
+response = urllib.urlopen('http://pastebin.com/api/api_post.php', urllib.urlencode(pastebin_vars))
+pb_url = response.read()
+
+print 'The Pastebin url to access the post is: '+pb_url
+
