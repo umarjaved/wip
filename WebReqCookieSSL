@@ -1,0 +1,25 @@
+import requests
+
+#Website SSL validation
+web_url = raw_input("NOTE: All https prefixed URLSs are scanned for valid SSL certificates \n" + "Please type in the URL with a http or https prefix: ")
+#web_url = raw_input("Please type in the URL with a http or https prefix: \n"+"NOTE: All https prefixed URLSs are scanned for valid SSL certificates ")
+if "https" in web_url:
+        try:
+           r = requests.get(web_url)  # will throw an exception if there are error
+        except requests.exceptions.SSLError:
+            print "====SSL STATUS===="
+            print "INVALID SSL CERTIFICATE DETECTED - APPROACH WITH CAUTION\n"
+        else:
+            print "this site uses a VALID SSL certificate \n\n"
+
+
+#Website headers
+print "====HEADER===="
+rheader = requests.get(web_url).headers
+print rheader
+
+
+#Website cookie
+print "===COOKIE===="
+rcookie = requests.get(web_url).cookies
+print rcookie
