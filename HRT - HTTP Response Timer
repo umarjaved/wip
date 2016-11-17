@@ -1,0 +1,60 @@
+import requests
+
+open_urls = open("C:\uj\urls.txt", "r")
+
+
+
+#  OPT 0
+# def uptime_check(str):
+#     if http_response >= 0.01:
+#         print "UP"
+#     elif http_response == 0.00:
+#         print "DOWN"
+
+
+
+for line in iter(open_urls):
+    http_response = requests.get(line).elapsed.total_seconds()
+    #  http_status = requests.get(line, headers=headers).status_code
+
+#  Comment out this line if you use OPT 2
+    #  print line + "\n" + str(http_response) + "s" #  + " " + "Status Code: " + str(http_status)
+    print line + str(http_response) + "s" # + str(uptime_check(http_response)) #  + " " + "Status Code: " + str(http_status)
+
+
+
+#  OPT 1
+#  Adjust settings as required
+#     if http_response >= 0.1:
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>HTTP RESPONSE IS SLOW"
+#     elif http_response >= 1.5:
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>HTTP RESPONSE MAY BE SLOWING"
+#     elif http_response >= 2.5:
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>HTTP RESPONSE TIMES ARE SLOW - CHECK ON INFRASTRUCTURE"
+#     elif http_response == 0.0:
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>POSSIBLE SITE OUTAGE!!!"
+#     else:
+#         print " "
+
+
+
+
+#  OPT 2
+#  Only prints a result if the specific condition is met below
+# #  Adjust settings as required
+#     if http_response >= 0.1:
+#         print line + str(http_response) + "s" #  + " " + "Status Code: " + str(http_status)
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>HTTP RESPONSE IS SLOW"
+#     elif http_response >= 1.5:
+#         print line + str(http_response) + "s" #  + " " + "Status Code: " + str(http_status)
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>HTTP RESPONSE MAY BE SLOWING"
+#     elif http_response >= 2.5:
+#         print line + str(http_response) + "s" #  + " " + "Status Code: " + str(http_status)
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>HTTP RESPONSE TIMES ARE SLOW - CHECK ON INFRASTRUCTURE"+"\n"
+#     elif http_response == 0.0:
+#         print line + str(http_response) + "s" #  + " " + "Status Code: " + str(http_status)
+#         print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>POSSIBLE SITE OUTAGE!!!"
+#     else:
+#         print ""
+#
+
